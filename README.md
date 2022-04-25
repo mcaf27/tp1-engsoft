@@ -1,9 +1,9 @@
 # tp1-engsoft
 
-Ana Luísa Mendes dos Santos - 2019110037
-Kaio Lucas de Sá - 2019006850
-Lucas Jacone - 2019006922
-Maria Clara de Arruda Ferreira - 2019006965
+- Ana Luísa Mendes dos Santos - 2019110037  
+- Kaio Lucas de Sá - 2019006850  
+- Lucas Jacone - 2019006922  
+- Maria Clara de Arruda Ferreira - 2019006965  
 
 *Sistema:* uma plataforma online para organização pessoal e recomendação de livros.
 
@@ -19,29 +19,29 @@ Maria Clara de Arruda Ferreira - 2019006965
 - Back: Node
 - Banco de dados: SQL
 
-*Backlog:*
--Criar o Banco de Dados:
-  °Estudar MySQL - Kaio
-  °Projetar Banco de Dados - Kaio
-  °Implementar Projeto - Kaio
--Cadastro de Usuário:
-  °Estudar JavaScript - Lucas
-  °Criar Front End do cadastro - Maria Clara
-  °Criar Funcionalidade para Salvar o novo Usuário no Banco - Lucas
-  °Criar Testes para o cadastro - Ana Luísa
- -Criar Perfil do Usuário:
-  ° Criar Front End do perfil - Maria Clara
-  ° Criar Back End do perfil - Lucas
-  ° Testes para o Perfil - Ana Luísa
- -Cadastro de Livros:
-  °Criar Botão para Cadastro de Livros no perfil do usuário - Maria Clara
-  °Fazer com que o botão salve os dados do livro no Banco de Dados - Lucas
-  °Testes para o botão - Ana Luísa
- -Avaliação de Livros:
-  °Implementar um botão de Like/Dislike - Maria Clara
-  °Salvar o Like/Dislike no BD - Lucas
-  °Testar Botão - Ana Luísa
- - Lista de Desejos:
-  °Criar Botão para salvar Livro na Lista de Desejos - Maria Clara
-  °Salvar Livro na Lista - Lucas
-  °Testar Lista de Desejos - Ana Luísa
+*Backlog:*  
+- Criar o Banco de Dados:  
+  ° Estudar MySQL - Kaio  
+  ° Projetar Banco de Dados - Kaio  
+  ° Implementar Projeto - Kaio  
+- Cadastro de Usuário:  
+  ° Estudar JavaScript - Lucas  
+  ° Criar Front End do cadastro - Maria Clara  
+  ° Criar Funcionalidade para Salvar o novo Usuário no Banco - Lucas  
+  ° Criar Testes para o cadastro - Ana Luísa  
+- Criar Perfil do Usuário:  
+  ° Criar Front End do perfil - Maria Clara  
+  ° Criar Back End do perfil - Lucas  
+  ° Testes para o Perfil - Ana Luísa  
+- Cadastro de Livros:  
+  ° Criar Botão para Cadastro de Livros no perfil do usuário - Maria Clara  
+  ° Fazer com que o botão salve os dados do livro no Banco de Dados - Lucas  
+  ° Testes para o botão - Ana Luísa  
+- Avaliação de Livros:  
+  ° Implementar um botão de Like/Dislike - Maria Clara  
+  ° Salvar o Like/Dislike no BD - Lucas  
+  ° Testar Botão - Ana Luísa  
+- Lista de Desejos:  
+  ° Criar Botão para salvar Livro na Lista de Desejos - Maria Clara  
+  ° Salvar Livro na Lista - Lucas  
+  ° Testar Lista de Desejos - Ana Luísa  
