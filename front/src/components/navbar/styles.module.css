@@ -1,0 +1,42 @@
+.nav {
+  width: 100%;
+  box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.2);
+  padding: 1.5rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: fit-content;
+}
+
+.nav a {
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.nav a,
+.nav a h1 {
+  transition: 0.3s;
+}
+
+.nav a:hover,
+.nav a:focus h1 {
+  filter: opacity(0.7);
+}
+
+.nav a.active,
+.nav a:focus {
+  border-bottom: 3px solid var(--text);
+  padding-bottom: 2.25rem;
+}
+
+.nav a + a {
+  margin-left: 3rem;
+}
+
+.nav h1 {
+  font-size: 2.5rem;
+}
+
+.nav span {
+  color: var(--pink);
+}

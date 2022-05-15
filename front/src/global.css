@@ -1,0 +1,26 @@
+:root {
+  --primary: #883df2;
+  --dark: #282140;
+  --dark-purple: #2c075f;
+  --blue: #3113f2;
+  --purple: #b150f2;
+  --pink: #d762d9;
+  --text: #eee;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Merriweather', serif;
+  background-color: var(--dark);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

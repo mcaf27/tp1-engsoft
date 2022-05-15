@@ -1,0 +1,17 @@
+.button {
+  border: 0;
+  background-color: var(--dark-purple);
+  color: var(--text);
+  border-radius: 5px;
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.4s;
+  box-shadow: 0 0 20px 0 rgba(50, 50, 50, 0.15);
+}
+
+.button:hover,
+.button:focus {
+  filter: saturate(2);
+}

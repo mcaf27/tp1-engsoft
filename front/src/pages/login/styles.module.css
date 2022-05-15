@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 70vw;
+  margin: 7rem auto;
+}
+
+.container section {
+  width: 45%;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.quote blockquote {
+  font-size: 2.5rem;
+}
+
+.quote blockquote span {
+  font-weight: 700;
+  font-style: italic;
+}
+
+.quote > span {
+  width: 100%;
+  text-align: right;
+  display: block;
+  font-size: 1.25rem;
+  margin-top: 1rem;
+}
+
+.loginSection {
+  background-color: var(--primary);
+  box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.25);
+}
+
+.loginSection label {
+  display: block;
+  padding-bottom: 0.25rem;
+}
+
+.loginSection input {
+  border: 0;
+  padding: 0.5rem;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.loginSection div + div {
+  padding-top: 2rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
