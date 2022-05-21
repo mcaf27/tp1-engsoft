@@ -8,6 +8,7 @@ export default function Button({
   disabled = false,
   href,
   text,
+  ...rest
 }) {
   if (!href)
     return (
@@ -15,6 +16,7 @@ export default function Button({
         onClick={onClick}
         disabled={disabled}
         className={[styles.button, className].join(' ')}
+        {...rest}
       >
         {text}
       </button>
@@ -25,6 +27,7 @@ export default function Button({
       to={href}
       disabled={disabled}
       className={[styles.button, className].join(' ')}
+      {...rest}
     >
       {text}
     </Link>
