@@ -9,6 +9,7 @@
   cursor: pointer;
   transition: 0.4s;
   box-shadow: 0 0 20px 0 rgba(50, 50, 50, 0.15);
+  font-size: 0.875rem;
 }
 
 .button:hover,

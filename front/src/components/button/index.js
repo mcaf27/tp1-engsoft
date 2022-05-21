@@ -1,13 +1,32 @@
+import { Link } from 'react-router-dom';
+
 import styles from './styles.module.css';
 
-export default function Button({ onClick, className, disabled = false, text }) {
+export default function Button({
+  onClick,
+  className,
+  disabled = false,
+  href,
+  text,
+}) {
+  if (!href)
+    return (
+      <button
+        onClick={onClick}
+        disabled={disabled}
+        className={[styles.button, className].join(' ')}
+      >
+        {text}
+      </button>
+    );
+
   return (
-    <button
-      onClick={onClick}
+    <Link
+      to={href}
       disabled={disabled}
       className={[styles.button, className].join(' ')}
     >
       {text}
-    </button>
+    </Link>
   );
 }

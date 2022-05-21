@@ -1,0 +1,29 @@
+.main {
+  max-width: 70vw;
+  margin: 5rem auto;
+}
+
+.main h2 {
+  font-size: 1.75rem;
+}
+
+.main header {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main .button {
+  background-color: var(--pink);
+}
+
+.content {
+  padding: 2rem;
+  background-color: var(--text);
+  border-radius: 6px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+  justify-content: center;
+  gap: 2rem;
+}

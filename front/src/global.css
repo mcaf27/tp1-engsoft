@@ -2,6 +2,7 @@
   --primary: #883df2;
   --dark: #282140;
   --dark-purple: #2c075f;
+  --light: #e3e3e3;
   --blue: #3113f2;
   --purple: #b150f2;
   --pink: #d762d9;
@@ -12,10 +13,10 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Merriweather', serif;
 }
 
 body {
-  font-family: 'Merriweather', serif;
   background-color: var(--dark);
   color: var(--text);
 }
