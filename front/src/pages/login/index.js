@@ -1,8 +1,22 @@
+import { useState } from 'react';
+
 import Button from '../../components/button';
+import { TextField } from '../../components/input';
 
 import styles from './styles.module.css';
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+
+  const submit = () => {
+    if (!email) setEmailError('Por favor, insira um email.');
+    if (!password) setPasswordError('Por favor, insira uma senha.');
+  };
+
   return (
     <div className={styles.container}>
       <section className={styles.quote}>
@@ -18,20 +32,35 @@ export default function Login() {
       </section>
 
       <section className={styles.loginSection}>
-        <div className={styles.input}>
-          <label htmlFor="email">Email</label>
-          <input id="email" type="email" />
-        </div>
+        <TextField
+          id="email"
+          placeholder="Insira o seu email"
+          label="Email"
+          value={email}
+          onChange={(e) => {
+            setEmailError('');
+            setEmail(e.target.value);
+          }}
+          errorMsg={emailError}
+        />
 
-        <div className={styles.input}>
-          <label htmlFor="password">Senha</label>
-          <input id="password" type="password" />
-        </div>
+        <TextField
+          id="password"
+          placeholder="Insira a sua senha"
+          type="password"
+          value={password}
+          label="Senha"
+          onChange={(e) => {
+            setPasswordError('');
+            setPassword(e.target.value);
+          }}
+          errorMsg={passwordError}
+        />
 
         <div className={styles.buttons}>
           <Button disabled text="cadastrar" />
 
-          <Button href="/" text={'entrar'} />
+          <Button text="entrar" onClick={submit} />
         </div>
       </section>
     </div>

@@ -1,6 +1,6 @@
 :root {
   --primary: #883df2;
-  --dark: #282140;
+  --dark: #33052b;
   --dark-purple: #2c075f;
   --light: #e3e3e3;
   --blue: #3113f2;
@@ -17,7 +17,7 @@
 }
 
 body {
-  background-color: var(--dark);
+  background: var(--dark) url('./mesh.png') no-repeat fixed;
   color: var(--text);
 }
 
