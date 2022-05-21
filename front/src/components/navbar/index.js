@@ -11,18 +11,18 @@ export default function Navbar() {
           home
         </Link>
         <Link
-          to="/meus-livros"
-          className={pathname === '/meus-livros' ? styles.active : undefined}
+          to="/livros"
+          className={pathname === '/livros' ? styles.active : undefined}
         >
-          meus livros
+          livros
         </Link>
         <Link
-          to="/lista-de-desejos"
+          to="/minha-biblioteca"
           className={
-            pathname === '/lista-de-desejos' ? styles.active : undefined
+            pathname === '/minha-biblioteca' ? styles.active : undefined
           }
         >
-          lista de desejos
+          minha biblioteca
         </Link>
       </section>
 

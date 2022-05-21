@@ -7,12 +7,12 @@ import PrivateRoute from './components/routes/PrivateRoute';
 
 import Login from './pages/login';
 import Books from './pages/books';
-import Wishlist from './pages/wishlist';
+import Library from './pages/library';
 
 import Navbar from './components/navbar';
 
 function App() {
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged] = useState(false);
 
   return (
     <>
@@ -36,7 +36,7 @@ function App() {
             }
           />
           <Route
-            path="/meus-livros"
+            path="/livros"
             element={
               <PrivateRoute isLogged={isLogged}>
                 <Books />
@@ -44,10 +44,10 @@ function App() {
             }
           />
           <Route
-            path="/lista-de-desejos"
+            path="/minha-biblioteca"
             element={
               <PrivateRoute isLogged={isLogged}>
-                <Wishlist />
+                <Library />
               </PrivateRoute>
             }
           />

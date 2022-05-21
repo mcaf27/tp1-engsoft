@@ -5,7 +5,7 @@ import Button from '../../components/button';
 import Modal from '../../components/modal';
 import { TextField, Select } from '../../components/input';
 
-import styles from './styles.module.css';
+import styles from '../main.module.css';
 
 import data from '../../books.json';
 

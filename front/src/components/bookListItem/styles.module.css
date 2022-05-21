@@ -1,0 +1,30 @@
+.book {
+  display: flex;
+  gap: 1rem;
+  /* max-width: 50%; */
+}
+
+.book + .book {
+  margin-top: 1rem;
+}
+
+.book img {
+  max-width: 75px;
+  aspect-ratio: 1 / 1.4;
+  border-radius: 4px;
+}
+
+.title {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.author {
+  font-size: 0.875rem;
+  margin-bottom: 0.15rem;
+}
+
+.genre {
+  font-size: 0.875rem;
+  font-style: italic;
+}
