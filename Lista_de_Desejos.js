@@ -1,7 +1,7 @@
 const Sequelize = require ('sequelize');
 const database = require('./db');
 
-const Lista_de_Desejos = database.define('produto', {
+const Lista_de_Desejos = database.define('lista de desejos', {
     idDesejo : {type: Sequelize.INTEGER,
         autoIncrement : true,
         allowNull : false,
