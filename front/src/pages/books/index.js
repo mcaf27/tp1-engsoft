@@ -1,15 +1,40 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-import { Container, Typography, Stack, Button, Card, Box, Dialog, TextField } from '@mui/material';
+import {
+  Container,
+  Typography,
+  Stack,
+  Button,
+  Card,
+  Box,
+  Dialog,
+  TextField,
+  Chip,
+} from '@mui/material';
 import Book from '../../components/book';
 
 import data from '../../books.json';
 
 import Add from '@mui/icons-material/AddCircleRounded';
 
+const genres = [
+  'Suspense',
+  'Romance',
+  'Ficção científica',
+  'História',
+  'Ação e aventura',
+  'Político',
+  'Computação',
+  'Aventura',
+  'Terror',
+  'Drama',
+  'Psicologia',
+  'Ciência',
+];
+
 export default function Books() {
   const [newBookModalOpen, setNewBookModalOpen] = useState(false);
-  const [books, setBooks] = useState(data);
+  const [books, setBooks] = useState(data.slice(0, 30));
 
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -20,6 +45,9 @@ export default function Books() {
   const [authorError, setAuthorError] = useState('');
   const [genreError, setGenreError] = useState('');
   const [coverError, setCoverError] = useState('');
+
+  const [selectedGenre, setSelectedGenre] = useState('');
+  const [genreFilterResults, setGenreFilterResults] = useState([]);
 
   const validateNewBook = () => {
     let newBook = true;
@@ -42,6 +70,11 @@ export default function Books() {
     else return false;
   };
 
+  useEffect(() => {
+    if (selectedGenre === '') setGenreFilterResults([]);
+    else setGenreFilterResults(books.filter((b) => b.Gênero === selectedGenre));
+  }, [selectedGenre]);
+
   return (
     <>
       <Container maxWidth="md">
@@ -52,21 +85,38 @@ export default function Books() {
           <Button
             variant="contained"
             sx={{ letterSpacing: '1px' }}
-            onClick={() => setNewBookModalOpen(true)}
+            onClick={() => {
+              setNewBookModalOpen(true);
+              setGenreFilterResults([]);
+            }}
           >
             cadastrar novo livro
           </Button>
         </Stack>
-        <Card sx={{ p: 3, mt: 3 }}>
+        <Card sx={{ p: 3, my: 3 }}>
+          <Stack direction="row" gap={1} flexWrap="wrap" mb={3}>
+            <Typography component="span">Filtre por gênero:</Typography>
+            {genres.map((genre, index) => (
+              <Chip
+                label={genre}
+                onClick={() =>
+                  genre === selectedGenre ? setSelectedGenre('') : setSelectedGenre(genre)
+                }
+                key={index}
+                sx={{ opacity: 0.9 }}
+                color={genre === selectedGenre ? 'secondary' : 'default'}
+              />
+            ))}
+          </Stack>
           <Box
             sx={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, auto))',
+              gridTemplateColumns: 'repeat(4, 1fr)',
               justifyContent: 'center',
               gap: 3,
             }}
           >
-            {books.map((book) => (
+            {(genreFilterResults.length > 0 ? genreFilterResults : books).map((book) => (
               <Book
                 cover={book.Capa}
                 title={book.Título}
@@ -143,19 +193,11 @@ export default function Books() {
             onClick={() => setGenreError('')}
           >
             <option hidden>Selecione uma opção</option>
-            <option value="Suspense">Suspense</option>
-            <option value="Romance">Romance</option>
-            <option value="Ficção científica">Ficção científica</option>
-            <option value="Fantasia">Fantasia</option>
-            <option value="Histório">Histório</option>
-            <option value="Ação e aventura">Ação e aventura</option>
-            <option value="Político">Político</option>
-            <option value="Computação">Computação</option>
-            <option value="Aventura">Aventura</option>
-            <option value="Terror">Terror</option>
-            <option value="Drama">Drama</option>
-            <option value="Psicologia">Psicologia</option>
-            <option value="Ciência">Ciência</option>
+            {genres.map((g, index) => (
+              <option key={index} value={genre}>
+                {genre}
+              </option>
+            ))}
           </TextField>
 
           <TextField
