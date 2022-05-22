@@ -10,6 +10,7 @@ import {
   Dialog,
   TextField,
   Chip,
+  Pagination,
 } from '@mui/material';
 import Book from '../../components/book';
 
@@ -20,7 +21,8 @@ import Add from '@mui/icons-material/AddCircleRounded';
 const genres = [
   'Suspense',
   'Romance',
-  'Ficção científica',
+  'Ficção Científica',
+  'Fantasia',
   'História',
   'Ação e aventura',
   'Político',
@@ -33,8 +35,23 @@ const genres = [
 ];
 
 export default function Books() {
+  const [books, setBooks] = useState(data);
+
+  const [selectedGenre, setSelectedGenre] = useState('');
+  const [genreFilterResults, setGenreFilterResults] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const booksPerPage = 20;
+
+  const indexLastBook = currentPage * booksPerPage;
+  const indexFirstBook = indexLastBook - booksPerPage;
+  const currentBooks = (genreFilterResults.length > 0 ? genreFilterResults : books).slice(
+    indexFirstBook,
+    indexLastBook
+  );
+
   const [newBookModalOpen, setNewBookModalOpen] = useState(false);
-  const [books, setBooks] = useState(data.slice(0, 30));
 
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -45,9 +62,6 @@ export default function Books() {
   const [authorError, setAuthorError] = useState('');
   const [genreError, setGenreError] = useState('');
   const [coverError, setCoverError] = useState('');
-
-  const [selectedGenre, setSelectedGenre] = useState('');
-  const [genreFilterResults, setGenreFilterResults] = useState([]);
 
   const validateNewBook = () => {
     let newBook = true;
@@ -71,8 +85,10 @@ export default function Books() {
   };
 
   useEffect(() => {
+    console.log(selectedGenre);
     if (selectedGenre === '') setGenreFilterResults([]);
     else setGenreFilterResults(books.filter((b) => b.Gênero === selectedGenre));
+    console.log(books.filter((b) => b.Gênero === selectedGenre));
   }, [selectedGenre]);
 
   return (
@@ -116,7 +132,8 @@ export default function Books() {
               gap: 3,
             }}
           >
-            {(genreFilterResults.length > 0 ? genreFilterResults : books).map((book) => (
+            {/* (genreFilterResults.length > 0 ? genreFilterResults : books) */}
+            {currentBooks.map((book) => (
               <Book
                 cover={book.Capa}
                 title={book.Título}
@@ -126,6 +143,22 @@ export default function Books() {
               />
             ))}
           </Box>
+          <Stack direction="row" justifyContent="center" mt={3}>
+            <Pagination
+              count={Math.ceil(
+                (genreFilterResults.length > 0 ? genreFilterResults : books).length / booksPerPage
+              )}
+              page={currentPage}
+              color="primary"
+              onChange={(_, n) => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+                setCurrentPage(n);
+              }}
+            />
+          </Stack>
         </Card>
       </Container>
 
