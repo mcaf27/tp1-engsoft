@@ -170,6 +170,10 @@ export default function Books() {
           setAuthor('');
           setGenre('');
           setCover('');
+          setTitleError('');
+          setAuthorError('');
+          setGenreError('');
+          setCoverError('');
         }}
       >
         <Stack sx={{ p: 5 }} gap={2}>
