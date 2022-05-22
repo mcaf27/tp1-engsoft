@@ -94,9 +94,10 @@ export default function Books() {
             variant="h5"
             sx={{
               px: 3,
+              mb: 1,
             }}
           >
-            cadastrar novo livro
+            cadastrar novo livro:
           </Typography>
           <TextField
             label="Título"
@@ -173,7 +174,7 @@ export default function Books() {
           <Button
             variant="contained"
             color="secondary"
-            sx={{ width: 'fit-content', lineHeight: '120%', mx: 'auto', letterSpacing: '1px' }}
+            sx={{ width: 'fit-content', lineHeight: '120%', mx: 'auto', mt: 1 }}
             endIcon={<Add />}
             onClick={() => {
               const valid = validateNewBook();
