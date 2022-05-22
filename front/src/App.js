@@ -11,11 +11,14 @@ import Library from './pages/library';
 
 import Navbar from './components/navbar';
 
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './theme';
+
 function App() {
-  const [isLogged] = useState(false);
+  const [isLogged] = useState(true);
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -53,7 +56,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
-    </>
+    </ThemeProvider>
   );
 }
 

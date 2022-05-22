@@ -1,8 +1,0 @@
-.content {
-  padding: 2rem;
-  background-color: var(--text);
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}

@@ -15,8 +15,6 @@
   opacity: 0;
   position: absolute;
   inset: 0;
-  bottom: 4px;
-  /* height: calc(100% + 4px); */
   transform: translateY(-100%);
   color: var(--text);
   padding: 2rem;
@@ -24,12 +22,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: 0.3s ease-out;
+  transition: 0.3s ease-in-out;
 }
 
 .book:hover .overlay {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(-4px);
 }
 
 .title {
@@ -44,8 +42,4 @@
 .genre {
   font-size: 0.75rem;
   font-style: italic;
-}
-
-.book:hover img {
-  box-shadow: 0 0 20px 0 rgba(194, 194, 194, 0.7);
 }

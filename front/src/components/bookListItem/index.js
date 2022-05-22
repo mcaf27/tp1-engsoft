@@ -1,15 +1,13 @@
-import styles from './styles.module.css';
+import { ListItem, ListItemAvatar, ListItemText, Avatar } from '@mui/material';
 
 const BookListItem = ({ cover, author, title, genre }) => {
   return (
-    <div className={styles.book}>
-      <img src={cover} />
-      <div className={styles.bookInfo}>
-        <p className={styles.title}>{title}</p>
-        <p className={styles.author}>{author}</p>
-        <p className={styles.genre}>{genre}</p>
-      </div>
-    </div>
+    <ListItem>
+      <ListItemAvatar sx={{ mr: 2 }}>
+        <Avatar src={cover} alt={title} variant="rounded" sx={{ width: '60px', height: '94px' }} />
+      </ListItemAvatar>
+      <ListItemText primary={title} secondary={author} />
+    </ListItem>
   );
 };
 

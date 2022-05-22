@@ -1,9 +1,7 @@
 import { useState } from 'react';
 
-import Button from '../../components/button';
-import { TextField } from '../../components/input';
-
-import styles from './styles.module.css';
+import { Container, Card, Stack, Button, TextField } from '@mui/material';
+import { styled } from '@mui/material';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -17,52 +15,82 @@ export default function Login() {
     if (!password) setPasswordError('Por favor, insira uma senha.');
   };
 
+  const Quote = styled(Stack)(() => ({
+    '& blockquote': {
+      fontSize: '2.5rem',
+      '& span': {
+        fontWeight: 700,
+        fontStyle: 'italic',
+      },
+    },
+    '& p': {
+      width: '100%',
+      textAlign: 'right',
+      fontSize: '1.25rem',
+      marginTop: '1rem',
+    },
+  }));
+
   return (
-    <div className={styles.container}>
-      <section className={styles.quote}>
+    <Container
+      maxWidth="md"
+      component="main"
+      sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        mt: 10,
+      }}
+    >
+      <Quote sx={{ width: '45%' }}>
         <blockquote>
-          <span>“U</span>m livro deve ser o machado que quebra o mar gelado em
-          nós.
+          <span>“U</span>m livro deve ser o machado que quebra o mar gelado em nós.
         </blockquote>
+        <p>Franz Kafka</p>
+      </Quote>
 
-        <span>Franz Kafka</span>
+      {/* A leitura é a viagem de quem não pode pegar um trem. */}
+      {/* Francis de Croisset  */}
+      <Card sx={{ px: 3, py: 6, width: '40%' }}>
+        <Stack gap={3} mb={3}>
+          <TextField
+            id="email"
+            placeholder="Insira o seu email"
+            label="Email"
+            value={email}
+            onChange={(e) => {
+              setEmailError('');
+              setEmail(e.target.value);
+            }}
+            error={!!emailError}
+            helperText={emailError}
+          />
 
-        {/* A leitura é a viagem de quem não pode pegar um trem. */}
-        {/* Francis de Croisset  */}
-      </section>
+          <TextField
+            id="password"
+            placeholder="Insira a sua senha"
+            type="password"
+            value={password}
+            label="Senha"
+            onChange={(e) => {
+              setPasswordError('');
+              setPassword(e.target.value);
+            }}
+            error={!!passwordError}
+            helperText={passwordError}
+          />
+        </Stack>
 
-      <section className={styles.loginSection}>
-        <TextField
-          id="email"
-          placeholder="Insira o seu email"
-          label="Email"
-          value={email}
-          onChange={(e) => {
-            setEmailError('');
-            setEmail(e.target.value);
-          }}
-          errorMsg={emailError}
-        />
+        <Stack direction="row" justifyContent="space-between">
+          <Button size="large" variant="contained" disabled>
+            cadastrar
+          </Button>
 
-        <TextField
-          id="password"
-          placeholder="Insira a sua senha"
-          type="password"
-          value={password}
-          label="Senha"
-          onChange={(e) => {
-            setPasswordError('');
-            setPassword(e.target.value);
-          }}
-          errorMsg={passwordError}
-        />
-
-        <div className={styles.buttons}>
-          <Button disabled text="cadastrar" />
-
-          <Button text="entrar" onClick={submit} />
-        </div>
-      </section>
-    </div>
+          <Button size="large" variant="contained" onClick={submit}>
+            entrar
+          </Button>
+        </Stack>
+      </Card>
+    </Container>
   );
 }

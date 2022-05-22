@@ -1,38 +1,73 @@
-import styles from './styles.module.css';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+
+import { AppBar, Container, Toolbar, Typography, MenuItem } from '@mui/material';
+
+import { styled, useTheme } from '@mui/material/styles';
+
+const Dot = styled('span')(({ theme }) => ({
+  color: theme.palette.primary.main,
+  fontSize: '4rem',
+  position: 'absolute',
+  bottom: '0.5rem',
+}));
 
 export default function Navbar() {
   const { pathname } = useLocation();
+  const theme = useTheme();
+
+  const [isLogged] = useState(true);
 
   return (
-    <nav className={styles.nav}>
-      <section>
-        <Link to="/" className={pathname === '/' ? styles.active : undefined}>
-          home
-        </Link>
-        <Link
-          to="/livros"
-          className={pathname === '/livros' ? styles.active : undefined}
-        >
-          livros
-        </Link>
-        <Link
-          to="/minha-biblioteca"
-          className={
-            pathname === '/minha-biblioteca' ? styles.active : undefined
-          }
-        >
-          minha biblioteca
-        </Link>
-      </section>
+    <AppBar position="static" sx={{ mb: 10 }}>
+      <Container maxWidth="xl">
+        <Toolbar>
+          {isLogged && (
+            <>
+              <MenuItem
+                sx={{
+                  borderBottom:
+                    pathname === '/livros' || pathname === '/'
+                      ? `2px solid ${theme.palette.text.primary}`
+                      : '0',
+                  mr: 2,
+                }}
+              >
+                <Link style={{ padding: `${theme.spacing(3)} 0` }} to="/livros">
+                  livros
+                </Link>
+              </MenuItem>
 
-      <section>
-        <Link to="/">
-          <h1>
-            AKLM<span>.</span>
-          </h1>
-        </Link>
-      </section>
-    </nav>
+              <MenuItem
+                sx={{
+                  borderBottom:
+                    pathname === '/minha-biblioteca'
+                      ? `2px solid ${theme.palette.text.primary}`
+                      : '0',
+                }}
+              >
+                <Link to="/minha-biblioteca" style={{ padding: `${theme.spacing(3)} 0` }}>
+                  minha biblioteca
+                </Link>
+              </MenuItem>
+            </>
+          )}
+
+          <MenuItem component={Link} to="/" sx={{ ml: 'auto', my: isLogged ? 1 : 3 }}>
+            <Typography
+              variant="h1"
+              sx={{
+                fontSize: '2.5rem',
+                lineHeight: '2.5rem',
+                letterSpacing: '1px',
+                position: 'relative',
+              }}
+            >
+              AKLM<Dot>.</Dot>
+            </Typography>
+          </MenuItem>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
