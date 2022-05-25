@@ -15,6 +15,12 @@ routes.post('/login', AuthController.login);
 
 routes.post('/user/cadastro', UserController.cadastro);
 
+routes.get('/book/ver', BookController.ver);
+
+routes.get('/book/verWish', verifyJWT, BookController.verWish);
+
+routes.get('/book/verLista', verifyJWT, BookController.verLista);
+
 routes.post('/book/cadastro', verifyJWT, BookController.cadastro);
 
 routes.post('/book/avaliar', verifyJWT, BookController.avaliar);

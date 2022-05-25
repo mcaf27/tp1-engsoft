@@ -21,7 +21,7 @@ module.exports = {
 
         if (hash === current.password) {
             const token = jwt.sign({ UserId: current.id }, process.env.SECRET);
-            return res.json({ auth: true, token });
+            return res.json({ auth: true, token, email });
         } else {
             res.status(401).end();
         }

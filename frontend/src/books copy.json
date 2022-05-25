@@ -1,0 +1,170 @@
+[
+  {
+    "id": 1,
+    "title": "Sapiens - Uma Breve História da Humanidade",
+    "author": "Yuval Noah Harari",
+    "user_id": 1,
+    "genre": "História",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/41HtOsNN4WL.jpg"
+  },
+  {
+    "id": 2,
+    "title": "O Andar do Bêbado: Como o acaso determina nossas vidas",
+    "author": "Leonard Milodinow",
+    "user_id": 1,
+    "genre": "Estatística e Probabilidade",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/61DU0FRThRL.jpg"
+  },
+  {
+    "id": 3,
+    "title": "O Nome do Vento",
+    "author": "Patrick Rothfuss",
+    "user_id": 1,
+    "genre": "Fantasia",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91Tb8yIdRML.jpg"
+  },
+  {
+    "id": 4,
+    "title": "O Temor do Sábio",
+    "author": "Patrick Rothfuss",
+    "user_id": 1,
+    "genre": "Fantasia",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91FGedpG6WS.jpg"
+  },
+  {
+    "id": 5,
+    "title": "A Música do Silêncio",
+    "author": "Patrick Rothfuss",
+    "user_id": 1,
+    "genre": "Fantasia",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/514znJoYOxS._SX346_BO1,204,203,200_.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Perdido em Marte",
+    "author": "Andy Weir",
+    "user_id": 1,
+    "genre": "Ficção Científica",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91ZtGAi9gNL.jpg"
+  },
+  {
+    "id": 7,
+    "title": "O Inimigo do Mundo",
+    "author": "Leonel Caldela",
+    "user_id": 1,
+    "genre": "Fantasia",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81gV8pCd6VL.jpg"
+  },
+  {
+    "id": 8,
+    "title": "O Crânio e o Corvo",
+    "author": "Leonel Caldela",
+    "user_id": 1,
+    "genre": "Fantasia",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/61BCylqL89L._SX337_BO1,204,203,200_.jpg"
+  },
+  {
+    "id": 9,
+    "title": "O Terceiro Deus",
+    "author": "Leonel Caldela",
+    "user_id": 1,
+    "genre": "Fantasia",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/51IvXtuIXgL._SX335_BO1,204,203,200_.jpg"
+  },
+  {
+    "id": 10,
+    "title": "A Flecha de Fogo",
+    "author": "Leonel Caldela",
+    "user_id": 1,
+    "genre": "Fantasia",
+    "cover": "https://m.media-amazon.com/images/I/51K04DrFFeL.jpg"
+  },
+  {
+    "id": 11,
+    "title": "A Joia da Alma",
+    "author": "Karen Soarele",
+    "user_id": 1,
+    "genre": "Fantasia",
+    "cover": "https://jambouser_id.com.br/app/uploads/2018/05/Lit-A-Joia-da-Alma.png"
+  },
+  {
+    "id": 12,
+    "title": "A Deusa no Labirinto",
+    "author": "Karen Soarele",
+    "user_id": 1,
+    "genre": "Fantasia",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/A1xCgpLLw-L.jpg"
+  },
+  {
+    "id": 13,
+    "title": "O Livro dos Baltimore",
+    "author": "Joël Dicker",
+    "user_id": 1,
+    "genre": "Ação e Aventura",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91H1Xje56SL.jpg"
+  },
+  {
+    "id": 14,
+    "title": "Os Três Mosqueteiros",
+    "author": "Alexandre Dumas, pai",
+    "user_id": 1,
+    "genre": "Ação e Aventura",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/817bVkQAWhL.jpg"
+  },
+  {
+    "id": 15,
+    "title": "O Senhor dos Anéis: A Sociedade do Anel",
+    "author": "J.R.R Tolkien",
+    "user_id": 1,
+    "genre": "Fantasia",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81SWBRKfExL.jpg"
+  },
+  {
+    "id": 16,
+    "title": "O Senhor dos Anéis: As Duas Torres",
+    "author": "J.R.R Tolkien",
+    "user_id": 1,
+    "genre": "Fantasia",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81lQ5N0QwJL.jpg"
+  },
+  {
+    "id": 17,
+    "title": "O Senhor dos Anéis: O Retorno do Rei",
+    "author": "J.R.R Tolkien",
+    "user_id": 1,
+    "genre": "Fantasia",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/71+4uDgt8JL.jpg"
+  },
+  {
+    "id": 18,
+    "title": "O Hobbit",
+    "author": "J.R.R Tolkien",
+    "user_id": 1,
+    "genre": "Fantasia",
+    "cover": "https://m.media-amazon.com/images/I/51S6-VeaHJL.jpg"
+  },
+  {
+    "id": 19,
+    "title": "1984",
+    "author": "George Orwell",
+    "user_id": 1,
+    "genre": "Político",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/819js3EQwbL.jpg"
+  },
+  {
+    "id": 20,
+    "title": "Admirável Mundo Novo",
+    "author": "Aldous Huxley",
+    "user_id": 1,
+    "genre": "Político",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/61hOp6UFvCL.jpg"
+  },
+  {
+    "id": 21,
+    "title": "Jogos Vorazes",
+    "author": "Suzanne Collins",
+    "user_id": 1,
+    "genre": "Ficção Científica",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/61zBhzjS4LL.jpg"
+  }
+]
