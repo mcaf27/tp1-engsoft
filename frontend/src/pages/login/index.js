@@ -66,7 +66,7 @@ export default function Login() {
 
       <Quote sx={{ width: '45%' }}>
         <blockquote>
-          <span>“U</span>m livro deve ser o machado que quebra o mar gelado em nós.
+          <span>“U</span>m livro deve ser o machado que quebra o mar gelado em nós"
         </blockquote>
         <p>Franz Kafka</p>
       </Quote>

@@ -47,7 +47,7 @@ export default function Navbar() {
                 }}
               >
                 <Link to="/minha-biblioteca" style={{ padding: `${theme.spacing(3)} 0` }}>
-                  minha biblioteca
+                  Biblioteca de  { localStorage.getItem("Email")}
                 </Link>
               </MenuItem>
             </>

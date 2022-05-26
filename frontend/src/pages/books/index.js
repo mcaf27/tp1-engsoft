@@ -116,7 +116,7 @@ export default function Books() {
       <Container maxWidth="md">
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="h2" sx={{ fontSize: "2rem" }}>
-            Livros de { localStorage.getItem("Email")}
+            Livros da Plataforma
           </Typography>
           <Button
             variant="contained"
