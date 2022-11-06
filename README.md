@@ -1,27 +1,30 @@
-# tp1-engsoft
+# Trabalho Prático: Etapa 1 - Engenharia de Software II
+
 
 - Ana Luísa Mendes dos Santos - 2019110037
 - Kaio Lucas de Sá - 2019006850
-- Lucas Jacone - 2019006922
 - Maria Clara de Arruda Ferreira - 2019006965
 
-Sistema: uma plataforma online para organização pessoal e recomendação de livros.
+#### Sistema: 
+Uma plataforma online para organização pessoal e recomendação de livros, originalmente criado para o Trabalho Prático da disciplina de Engenharia de Software I
 
-Possíveis features:
+## Features implementadas: 
 
-- cadastro de usuário
-- cadastro dos livros
-- avaliação de livros
-- lista de desejos
-- recomendações de livros (com base nos gêneros dos livros já lidos)
+* cadastro de usuário
+* cadastro dos livros
+* avaliação de livros
+* lista de desejos
 
-Possíveis tecnologias:
 
-- Front: React
-- Back: Node
-- Banco de dados: SQL
+## Tecnologias utilizadas:
 
-Backlog:
+* Front: React
+* Back: Node
+* Banco de dados: SQL
+
+----------------------------------------------------------------------------------------
+
+## Backlog:
 
 - Criar o Banco de Dados:  
   ° Estudar MySQL - Kaio  
@@ -48,3 +51,4 @@ Backlog:
   ° Criar Botão para salvar Livro na Lista de Desejos - Maria Clara  
   ° Salvar Livro na Lista - Lucas  
   ° Testar Lista de Desejos - Ana Luísa
+

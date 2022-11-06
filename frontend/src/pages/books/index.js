@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import { listagem } from "../../services/bookService";
+import { listagem } from '../../services/bookService';
 
-import { cadastrarLivro } from "../../services/bookService";
+import { cadastrarLivro } from '../../services/bookService';
 
 import {
   Container,
@@ -15,80 +15,121 @@ import {
   TextField,
   Chip,
   Pagination,
-} from "@mui/material";
-import Book from "../../components/book";
+} from '@mui/material';
 
-import data from "../../books.json";
+import Book from '../../components/book';
 
-import Add from "@mui/icons-material/AddCircleRounded";
+import Add from '@mui/icons-material/AddCircleRounded';
 
 const genres = [
-  "Suspense",
-  "Romance",
-  "Ficção Científica",
-  "Fantasia",
-  "História",
-  "Ação e aventura",
-  "Político",
-  "Computação",
-  "Aventura",
-  "Terror",
-  "Drama",
-  "Psicologia",
-  "Ciência",
-  "Todos",
+  'Suspense',
+  'Romance',
+  'Ficção Científica',
+  'Fantasia',
+  'História',
+  'Ação e aventura',
+  'Político',
+  'Computação',
+  'Aventura',
+  'Terror',
+  'Drama',
+  'Psicologia',
+  'Ciência',
+  'Todos',
 ];
 
+
+function ListBooks({ books }) {
+  return (
+    books &&
+    books.map((value) => {
+      return (
+        <Book
+          id={value.id}
+          cover={value.cover}
+          title={value.title}
+          author={value.author}
+          genre={value.genre}
+          key={value.id}
+          score={value.score}
+        />
+      );
+    })
+  );
+}
+
 export default function Books() {
-  const [books, setBooks] = useState("");
-  const [booksF, setBooksF] = useState("");
+  const [books, setBooks] = useState('');
+  const [booksF, setBooksF] = useState('');
 
   const [enviado, setEnviado] = useState(false);
 
-  const [selectedGenre, setSelectedGenre] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState('');
   const [genreFilterResults, setGenreFilterResults] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
 
   const booksPerPage = 20;
 
-  const indexLastBook = currentPage * booksPerPage;
-  const indexFirstBook = indexLastBook - booksPerPage;
-  const currentBooks = (
-    genreFilterResults.length > 0 ? genreFilterResults : books
-  ).slice(indexFirstBook, indexLastBook);
-
   const [newBookModalOpen, setNewBookModalOpen] = useState(false);
 
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [genre, setGenre] = useState("");
-  const [cover, setCover] = useState("");
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [genre, setGenre] = useState('');
+  const [cover, setCover] = useState('');
 
-  const [titleError, setTitleError] = useState("");
-  const [authorError, setAuthorError] = useState("");
-  const [genreError, setGenreError] = useState("");
-  const [coverError, setCoverError] = useState("");
+  const [titleError, setTitleError] = useState('');
+  const [authorError, setAuthorError] = useState('');
+  const [genreError, setGenreError] = useState('');
+  const [coverError, setCoverError] = useState('');
+
+  const checkNewBook = () => {
+    const titles = books.map((b) => b.Título);
+    if (titles.includes(title)) {
+      setTitleError('Esse livro já existe aqui.');
+      return false;
+    }
+    return true;
+  };
+
+  const checkTitleError = () => {
+    if (!title) {
+      setTitleError('O livro precisa de um título.');
+      return true;
+    }
+  };
+
+  const checkAuthorError = () => {
+    if (!author) {
+      setAuthorError('O livro precisa de um autor.');
+      return true;
+    }
+  };
+
+  const checkGenreError = () => {
+    if (!genre) {
+      setGenreError('O livro precisa de um gênero.');
+      return true;
+    }
+  };
+
+  const checkCoverError = () => {
+    if (!cover) {
+      setCoverError('O livro precisa de uma capa.');
+      return true;
+    }
+  };
 
   const validateNewBook = () => {
-    let newBook = true;
+    let hasError = false;
 
-    if (!title) {
-      setTitleError("O livro precisa de um título.");
-    } else {
-      const titles = books.map((b) => b.Título);
-      if (titles.includes(title)) {
-        setTitleError("Esse livro já existe aqui.");
-        newBook = false;
-      }
-    }
+    hasError = checkTitleError();
+    hasError = checkAuthorError();
+    hasError = checkGenreError();
+    hasError = checkCoverError();
 
-    if (!author) setAuthorError("O livro precisa de um autor.");
-    if (!genre) setGenreError("O livro precisa de um gênero.");
-    if (!cover) setCoverError("O livro precisa de uma capa.");
-
-    if (!!title && !!author && !!genre && !!cover) return true && newBook;
-    else return false;
+    if (!hasError) return checkNewBook();
+    return false;
   };
 
   const myFunction = async () => {
@@ -97,30 +138,27 @@ export default function Books() {
     setBooksF(promise);
   };
 
-  useEffect(() => {
-    myFunction();
-  }, [enviado]);
+  useEffect(() => {myFunction();}, [enviado]);
 
-  useEffect(() => {
-    console.log(selectedGenre);
-    if (selectedGenre == "Todos") {
+  useEffect(() => { console.log(selectedGenre);
+    if (selectedGenre == 'Todos') {
       setBooksF(books);
-    }
-    else if (books) {
-        setBooksF(books.filter((b) => b.genre === selectedGenre));
+    } else if (books) {
+      setBooksF(books.filter((b) => b.genre === selectedGenre));
     }
   }, [selectedGenre]);
+
 
   return (
     <>
       <Container maxWidth="md">
         <Stack direction="row" justifyContent="space-between">
-          <Typography variant="h2" sx={{ fontSize: "2rem" }}>
+          <Typography variant="h2" sx={{ fontSize: '2rem' }}>
             Livros da Plataforma
           </Typography>
           <Button
             variant="contained"
-            sx={{ letterSpacing: "1px" }}
+            sx={{ letterSpacing: '1px' }}
             onClick={() => {
               setNewBookModalOpen(true);
               setGenreFilterResults([]);
@@ -136,53 +174,38 @@ export default function Books() {
               <Chip
                 label={genre}
                 onClick={() =>
-                  genre === selectedGenre
-                    ? setSelectedGenre("")
-                    : setSelectedGenre(genre)
+                  genre === selectedGenre ? setSelectedGenre('') : setSelectedGenre(genre)
                 }
                 key={index}
                 sx={{ opacity: 0.9 }}
-                color={genre === selectedGenre ? "secondary" : "default"}
+                color={genre === selectedGenre ? 'secondary' : 'default'}
               />
             ))}
           </Stack>
           <Box
             sx={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              justifyContent: "center",
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              justifyContent: 'center',
               gap: 3,
             }}
           >
             {/* (genreFilterResults.length > 0 ? genreFilterResults : books) */}
 
-            {booksF &&
-              booksF.map((value, key) => {
-                return (
-                  <Book
-                    id={value.id}
-                    cover={value.cover}
-                    title={value.title}
-                    author={value.author}
-                    genre={value.genre}
-                    key={value.id}
-                    score={value.score}
-                  />
-                );
-              })}
+            <ListBooks books={booksF} />
+
           </Box>
           <Stack direction="row" justifyContent="center" mt={3}>
             <Pagination
               count={Math.ceil(
-                (genreFilterResults.length > 0 ? genreFilterResults : books)
-                  .length / booksPerPage
+                (genreFilterResults.length > 0 ? genreFilterResults : books).length / booksPerPage
               )}
               page={currentPage}
               color="primary"
               onChange={(_, n) => {
                 window.scrollTo({
                   top: 0,
-                  behavior: "smooth",
+                  behavior: 'smooth',
                 });
                 setCurrentPage(n);
               }}
@@ -195,14 +218,14 @@ export default function Books() {
         open={newBookModalOpen}
         onClose={() => {
           setNewBookModalOpen(false);
-          setTitle("");
-          setAuthor("");
-          setGenre("");
-          setCover("");
-          setTitleError("");
-          setAuthorError("");
-          setGenreError("");
-          setCoverError("");
+          setTitle('');
+          setAuthor('');
+          setGenre('');
+          setCover('');
+          setTitleError('');
+          setAuthorError('');
+          setGenreError('');
+          setCoverError('');
         }}
       >
         <Stack sx={{ p: 5 }} gap={2}>
@@ -221,7 +244,7 @@ export default function Books() {
             value={title}
             onChange={(e) => {
               setTitle(e.target.value);
-              setTitleError("");
+              setTitleError('');
             }}
             placeholder="Insira o título do livro"
             error={!!titleError}
@@ -234,7 +257,7 @@ export default function Books() {
             value={author}
             onChange={(e) => {
               setAuthor(e.target.value);
-              setAuthorError("");
+              setAuthorError('');
             }}
             placeholder="Insira o autor do livro"
             error={!!authorError}
@@ -245,7 +268,7 @@ export default function Books() {
             value={genre}
             onChange={(e) => {
               setGenre(e.target.value);
-              setGenreError("");
+              setGenreError('');
             }}
             error={!!genreError}
             helperText={genreError}
@@ -253,10 +276,10 @@ export default function Books() {
             select
             SelectProps={{
               native: true,
-              defaultValue: "none",
-              sx: { color: genreError ? "error.main" : "currentcolor" },
+              defaultValue: 'none',
+              sx: { color: genreError ? 'error.main' : 'currentcolor' },
             }}
-            onClick={() => setGenreError("")}
+            onClick={() => setGenreError('')}
           >
             <option hidden>Selecione uma opção</option>
             {genres.map((g, index) => (
@@ -272,7 +295,7 @@ export default function Books() {
             value={cover}
             onChange={(e) => {
               setCover(e.target.value);
-              setCoverError("");
+              setCoverError('');
             }}
             placeholder="Insira a URL da capa do livro"
             error={!!coverError}
@@ -282,18 +305,13 @@ export default function Books() {
           <Button
             variant="contained"
             color="secondary"
-            sx={{ width: "fit-content", lineHeight: "120%", mx: "auto", mt: 1 }}
+            sx={{ width: 'fit-content', lineHeight: '120%', mx: 'auto', mt: 1 }}
             endIcon={<Add />}
             onClick={async () => {
               const valid = validateNewBook();
               if (!valid) return;
 
-              const response = await cadastrarLivro(
-                title,
-                author,
-                cover,
-                genre
-              );
+              const response = await cadastrarLivro(title, author, cover, genre);
               console.log(response);
 
               setNewBookModalOpen(false);
