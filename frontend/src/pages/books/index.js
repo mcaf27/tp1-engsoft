@@ -81,28 +81,42 @@ export default function Books() {
   };
 
   const checkTitleError = () => {
-    if (!title) setTitleError('O livro precisa de um título.');
+    if (!title) {
+      setTitleError('O livro precisa de um título.');
+      return true;
+    }
   };
 
   const checkAuthorError = () => {
-    if (!author) setAuthorError('O livro precisa de um autor.');
+    if (!author) {
+      setAuthorError('O livro precisa de um autor.');
+      return true;
+    }
   };
 
   const checkGenreError = () => {
-    if (!genre) setGenreError('O livro precisa de um gênero.');
+    if (!genre) {
+      setGenreError('O livro precisa de um gênero.');
+      return true;
+    }
   };
 
   const checkCoverError = () => {
-    if (!cover) setCoverError('O livro precisa de uma capa.');
+    if (!cover) {
+      setCoverError('O livro precisa de uma capa.');
+      return true;
+    }
   };
 
   const validateNewBook = () => {
-    checkTitleError();
-    checkAuthorError();
-    checkGenreError();
-    checkCoverError();
+    let hasError = false;
 
-    if (!!title && !!author && !!genre && !!cover) return checkNewBook();
+    hasError = checkTitleError();
+    hasError = checkAuthorError();
+    hasError = checkGenreError();
+    hasError = checkCoverError();
+
+    if (!hasError) return checkNewBook();
     else return false;
   };
 
