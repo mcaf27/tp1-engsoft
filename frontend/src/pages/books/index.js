@@ -16,9 +16,8 @@ import {
   Chip,
   Pagination,
 } from '@mui/material';
-import Book from '../../components/book';
 
-import data from '../../books.json';
+import Book from '../../components/book';
 
 import Add from '@mui/icons-material/AddCircleRounded';
 
@@ -39,6 +38,26 @@ const genres = [
   'Todos',
 ];
 
+
+function ListBooks({ books }) {
+  return (
+    books &&
+    books.map((value) => {
+      return (
+        <Book
+          id={value.id}
+          cover={value.cover}
+          title={value.title}
+          author={value.author}
+          genre={value.genre}
+          key={value.id}
+          score={value.score}
+        />
+      );
+    })
+  );
+}
+
 export default function Books() {
   const [books, setBooks] = useState('');
   const [booksF, setBooksF] = useState('');
@@ -51,13 +70,6 @@ export default function Books() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const booksPerPage = 20;
-
-  const indexLastBook = currentPage * booksPerPage;
-  const indexFirstBook = indexLastBook - booksPerPage;
-  const currentBooks = (genreFilterResults.length > 0 ? genreFilterResults : books).slice(
-    indexFirstBook,
-    indexLastBook
-  );
 
   const [newBookModalOpen, setNewBookModalOpen] = useState(false);
 
@@ -126,18 +138,16 @@ export default function Books() {
     setBooksF(promise);
   };
 
-  useEffect(() => {
-    myFunction();
-  }, [enviado]);
+  useEffect(() => {myFunction();}, [enviado]);
 
-  useEffect(() => {
-    console.log(selectedGenre);
+  useEffect(() => { console.log(selectedGenre);
     if (selectedGenre == 'Todos') {
       setBooksF(books);
     } else if (books) {
       setBooksF(books.filter((b) => b.genre === selectedGenre));
     }
   }, [selectedGenre]);
+
 
   return (
     <>
@@ -182,20 +192,8 @@ export default function Books() {
           >
             {/* (genreFilterResults.length > 0 ? genreFilterResults : books) */}
 
-            {booksF &&
-              booksF.map((value, key) => {
-                return (
-                  <Book
-                    id={value.id}
-                    cover={value.cover}
-                    title={value.title}
-                    author={value.author}
-                    genre={value.genre}
-                    key={value.id}
-                    score={value.score}
-                  />
-                );
-              })}
+            <ListBooks books={booksF} />
+
           </Box>
           <Stack direction="row" justifyContent="center" mt={3}>
             <Pagination
