@@ -117,7 +117,7 @@ export default function Books() {
     hasError = checkCoverError();
 
     if (!hasError) return checkNewBook();
-    else return false;
+    return false;
   };
 
   const myFunction = async () => {
