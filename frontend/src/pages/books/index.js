@@ -52,13 +52,6 @@ export default function Books() {
 
   const booksPerPage = 20;
 
-  const indexLastBook = currentPage * booksPerPage;
-  const indexFirstBook = indexLastBook - booksPerPage;
-  const currentBooks = (genreFilterResults.length > 0 ? genreFilterResults : books).slice(
-    indexFirstBook,
-    indexLastBook
-  );
-
   const [newBookModalOpen, setNewBookModalOpen] = useState(false);
 
   const [title, setTitle] = useState('');
@@ -126,18 +119,18 @@ export default function Books() {
     setBooksF(promise);
   };
 
-  useEffect(() => {
-    myFunction();
-  }, [enviado]);
+  useEffect(() => {myFunction();}, [enviado]);
 
   useEffect(() => {
     console.log(selectedGenre);
     if (selectedGenre == 'Todos') {
       setBooksF(books);
-    } else if (books) {
+    } 
+    else if (books) {
       setBooksF(books.filter((b) => b.genre === selectedGenre));
     }
   }, [selectedGenre]);
+
 
   return (
     <>
@@ -317,7 +310,7 @@ export default function Books() {
               console.log(response);
 
               setNewBookModalOpen(false);
-              setEnviado(!enviado);
+              setEnviado(!enviado);s
             }}
           >
             enviar
