@@ -16,9 +16,8 @@ import {
   Chip,
   Pagination,
 } from '@mui/material';
-import Book from '../../components/book';
 
-import data from '../../books.json';
+import Book from '../../components/book';
 
 import Add from '@mui/icons-material/AddCircleRounded';
 
@@ -38,6 +37,26 @@ const genres = [
   'Ciência',
   'Todos',
 ];
+
+
+function ListBooks({ books }) {
+  return (
+    books &&
+    books.map((value) => {
+      return (
+        <Book
+          id={value.id}
+          cover={value.cover}
+          title={value.title}
+          author={value.author}
+          genre={value.genre}
+          key={value.id}
+          score={value.score}
+        />
+      );
+    })
+  );
+}
 
 export default function Books() {
   const [books, setBooks] = useState('');
@@ -121,12 +140,10 @@ export default function Books() {
 
   useEffect(() => {myFunction();}, [enviado]);
 
-  useEffect(() => {
-    console.log(selectedGenre);
+  useEffect(() => { console.log(selectedGenre);
     if (selectedGenre == 'Todos') {
       setBooksF(books);
-    } 
-    else if (books) {
+    } else if (books) {
       setBooksF(books.filter((b) => b.genre === selectedGenre));
     }
   }, [selectedGenre]);
@@ -175,20 +192,8 @@ export default function Books() {
           >
             {/* (genreFilterResults.length > 0 ? genreFilterResults : books) */}
 
-            {booksF &&
-              booksF.map((value, key) => {
-                return (
-                  <Book
-                    id={value.id}
-                    cover={value.cover}
-                    title={value.title}
-                    author={value.author}
-                    genre={value.genre}
-                    key={value.id}
-                    score={value.score}
-                  />
-                );
-              })}
+            <ListBooks books={booksF} />
+
           </Box>
           <Stack direction="row" justifyContent="center" mt={3}>
             <Pagination
@@ -310,7 +315,7 @@ export default function Books() {
               console.log(response);
 
               setNewBookModalOpen(false);
-              setEnviado(!enviado);s
+              setEnviado(!enviado);
             }}
           >
             enviar
