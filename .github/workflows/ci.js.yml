@@ -1,4 +1,4 @@
-name: Tests4
+name: Tests5
 on: [pull_request, push]
 jobs:
   cypress-run:
@@ -8,7 +8,7 @@ jobs:
         os: [windows-latest, ubuntu-latest, macos-latest]
     steps:
       - name: Setup npm package
-        run: pwd && ls -l && cd tp1-engsoft/tp1-engsoft/frontend && yarn -y
+        run: pwd && ls && cd frontend && yarn -y
       - name: Checkout
         uses: actions/checkout@v2
       - name: Cypress run
