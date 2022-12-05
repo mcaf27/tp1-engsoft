@@ -1,4 +1,4 @@
-name: End-to-end tests
+name: Tests
 on: [pull_request, push]
 jobs:
   cypress-run:
@@ -8,7 +8,7 @@ jobs:
         os: [windows-latest, ubuntu-latest, macos-latest]
     steps:
       - name: Setup npm package
-        run: ls -l && yarn -y
+        run: ls -l && cd frontend && yarn -y
       - name: Checkout
         uses: actions/checkout@v2
       - name: Cypress run
