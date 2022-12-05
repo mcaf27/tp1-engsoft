@@ -18,7 +18,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "preinstall": "npx force-resolutions",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -44,8 +43,5 @@
   },
   "devDependencies": {
     "cypress": "^11.2.0"
-  },
-  "resolutions": {
-  "ssri": "8.0.5"
   }
 }
