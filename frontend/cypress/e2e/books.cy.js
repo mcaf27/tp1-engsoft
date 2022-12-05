@@ -19,12 +19,14 @@ describe('exibição dos livros', () => {
     localStorage.removeItem('AuthToken');
   });
 
-  // it('os filtros estão realmente mudando os livros exibidos', () => {
-  //   cy.get('#genre-filters').contains('Suspense').click();
+  it('os filtros estão realmente mudando os livros exibidos', () => {
+    cy.get('#genre-filters').contains('Suspense').click();
 
-  //   cy.get('.livro').then((b) => b.contains('O Inocente'));
-  //   cy.pause();
-  // });
+    cy.get('.livro').first().contains('O Inocente');
+    cy.get('.livro').each((l) => {
+      cy.get(l).should('not.contain', 'Perdido em marte');
+    });
+  });
 
   it('a página 20 livros', () => {
     cy.get('.livro').should('have.length', 20);

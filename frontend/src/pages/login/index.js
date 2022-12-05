@@ -4,7 +4,7 @@ import { login } from '../../services/authService';
 
 import { cadastrar } from '../../services/authService';
 
-import { Navigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
 
 import { Container, Card, Stack, Button, TextField } from '@mui/material';
 import { styled } from '@mui/material';
@@ -20,18 +20,20 @@ export default function Login() {
   const submit = async () => {
     if (!email) setEmailError('Por favor, insira um email.');
     if (!password) setPasswordError('Por favor, insira uma senha.');
+    if (!email || !password) return;
 
-    const response = await login(email,password);
-    localStorage.setItem('AuthToken', response.data.token);
-    localStorage.setItem('Email', response.data.email);
-    setAuth(response.data.auth);
+    const response = await login(email, password);
+    // localStorage.setItem('AuthToken', response.data.token);
+    // localStorage.setItem('Email', response.data.email);
+    // setAuth(response.data.auth);
+    setAuth(true);
   };
 
   const submit2 = async () => {
     if (!email) setEmailError('Por favor, insira um email.');
     if (!password) setPasswordError('Por favor, insira uma senha.');
 
-    const response = await cadastrar(email,password);
+    // const response = await cadastrar(email, password);
   };
 
   const Quote = styled(Stack)(() => ({
@@ -61,7 +63,6 @@ export default function Login() {
         mt: 10,
       }}
     >
-
       {auth && <Navigate to="/livros" />}
 
       <Quote sx={{ width: '45%' }}>
@@ -108,7 +109,7 @@ export default function Login() {
             cadastrar
           </Button>
 
-          <Button size="large" variant="contained" onClick={submit}>
+          <Button size="large" type="submit" variant="contained" onClick={submit}>
             entrar
           </Button>
         </Stack>
