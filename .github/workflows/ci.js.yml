@@ -1,8 +1,5 @@
 name: End-to-end tests
 on: [pull_request, push]
-defaults:
-  run:
-    working-directory: ./frontend
 jobs:
   cypress-run:
     runs-on: ${{ matrix.os }}
