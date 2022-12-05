@@ -8,7 +8,7 @@ jobs:
         os: [windows-latest, ubuntu-latest, macos-latest]
     steps:
       - name: Setup npm package
-        run: yarn -y
+        run: ls -l && yarn -y
       - name: Checkout
         uses: actions/checkout@v2
       - name: Cypress run
