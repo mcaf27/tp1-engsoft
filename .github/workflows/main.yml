@@ -1,10 +1,6 @@
-name: Cypress Tests2
+name: Cypress Tests4
 
 on: [push]
-
-defaults:
-  run:
-    working-directory: frontend
 
 jobs:
   cypress-run:
@@ -17,5 +13,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4 # use the explicit version number
         with:
+          working-directory: frontend
           build: pwd && ls && npm run build
           start: pwd && ls && npm start
