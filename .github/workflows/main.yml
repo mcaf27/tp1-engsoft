@@ -1,4 +1,4 @@
-name: Cypress Tests4
+name: Cypress Tests7
 
 on: [push]
 
@@ -16,3 +16,4 @@ jobs:
           working-directory: frontend
           build: pwd && ls && npm run build
           start: pwd && ls && npm start
+          wait-on: 'http://localhost:3000'
