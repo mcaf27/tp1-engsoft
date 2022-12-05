@@ -1,6 +1,10 @@
-name: Cypress Tests1
+name: Cypress Tests2
 
 on: [push]
+
+defaults:
+  run:
+    working-directory: frontend
 
 jobs:
   cypress-run:
