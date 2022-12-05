@@ -1,0 +1,10 @@
+name: End-to-end tests
+on: [pull_request, push]
+jobs:
+  cypress-run:
+    runs-on:  [windows-latest, ubuntu-latest, macos-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
