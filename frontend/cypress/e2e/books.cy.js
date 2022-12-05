@@ -22,7 +22,6 @@ describe('exibição dos livros', () => {
   it('os filtros estão realmente mudando os livros exibidos', () => {
     cy.get('#genre-filters').contains('Suspense').click();
 
-    cy.get('.livro').first().contains('O Inocente');
     cy.get('.livro').each((l) => {
       cy.get(l).should('not.contain', 'Perdido em marte');
     });
