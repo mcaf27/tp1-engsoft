@@ -1,0 +1,16 @@
+name: End-to-end tests
+on: [pull_request, push]
+jobs:
+  cypress-run:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+    steps:
+      - name: Setup npm package
+        run: yarn
+        working-directory: frontend
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
