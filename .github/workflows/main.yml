@@ -5,6 +5,9 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 14, 16, 18 ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -14,6 +17,7 @@ jobs:
         uses: cypress-io/github-action@v4 # use the explicit version number
         with:
           working-directory: frontend
+          node-version: ${{ matrix.node }}
           build: pwd && ls && npm run build
           start: pwd && ls && npm start
           wait-on: 'http://localhost:3000'
