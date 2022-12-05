@@ -12,7 +12,6 @@ const Dot = styled('span')(({ theme }) => ({
   bottom: '0.5rem',
 }));
 
-
 function LoggedMenuItems() {
   const { pathname } = useLocation();
   const theme = useTheme();
@@ -40,7 +39,7 @@ function LoggedMenuItems() {
         }}
       >
         <Link to="/minha-biblioteca" style={{ padding: `${theme.spacing(3)} 0` }}>
-          Biblioteca de {localStorage.getItem('Email')}
+          Biblioteca de teste@email.com
         </Link>
       </MenuItem>
     </>
@@ -49,19 +48,13 @@ function LoggedMenuItems() {
 
 export default function Navbar() {
   const { pathname } = useLocation();
-  const theme = useTheme();
-
-  const [isLogged] = useState(true);
-
   return (
     <AppBar position="static" sx={{ mb: 10 }}>
       <Container maxWidth="xl">
         <Toolbar>
-          {isLogged && (
-            <LoggedMenuItems/>
-          )}
+          {pathname !== '/' && <LoggedMenuItems />}
 
-          <MenuItem component={Link} to="/" sx={{ ml: 'auto', my: isLogged ? 1 : 3 }}> 
+          <MenuItem component={Link} to="/" sx={{ ml: 'auto', my: pathname !== '/' ? 1 : 3 }}>
             <Typography
               variant="h1"
               sx={{
@@ -79,4 +72,3 @@ export default function Navbar() {
     </AppBar>
   );
 }
-

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { addWishList } from '../../services/bookService';
 
-import { avaliar } from "../../services/bookService";
+import { avaliar } from '../../services/bookService';
 
 import { Box, Stack, Typography, Rating, IconButton, styled, alpha, useTheme } from '@mui/material';
 import AddOutline from '@mui/icons-material/AddCircleOutlineRounded';
@@ -31,20 +31,20 @@ const BookStyles = styled(Box)(({ theme }) => ({
   },
 }));
 
-export default function Book({id, score, cover, title, author, genre }) {
+export default function Book({ id, score, cover, title, author, genre }) {
   const [rating, setRating] = useState(score);
   const [addedToList, setAddedToList] = useState(false);
 
   const theme = useTheme();
 
-  async function addToList(){
+  async function addToList() {
     setAddedToList(!addedToList);
     const response = await addWishList(id);
     console.log(response);
   }
 
   return (
-    <BookStyles>
+    <BookStyles className="livro">
       <img src={cover} alt={title} />
       <Stack component="div" justifyContent="space-around" alignItems="center">
         <IconButton
@@ -71,7 +71,15 @@ export default function Book({id, score, cover, title, author, genre }) {
         </Typography>
         <Typography>{author}</Typography>
         <Typography variant="caption">{score?.toFixed(2)}</Typography>
-        <Rating value={rating} onChange={(_, v) => {console.log(id,v);avaliar(id, v);setRating(v);document.location.reload()}}/>
+        <Rating
+          value={rating}
+          onChange={(_, v) => {
+            console.log(id, v);
+            avaliar(id, v);
+            setRating(v);
+            // document.location.reload();
+          }}
+        />
       </Stack>
     </BookStyles>
   );

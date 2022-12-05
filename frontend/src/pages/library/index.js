@@ -1,27 +1,42 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import { listagemMeusLivros } from "../../services/bookService";
-import { listagemDesejo } from "../../services/bookService";
+import { listagemMeusLivros } from '../../services/bookService';
+import { listagemDesejo } from '../../services/bookService';
 
-import BookListItem from "../../components/bookListItem";
-import Book from "../../components/book";
+import BookListItem from '../../components/bookListItem';
+import Book from '../../components/book';
 
-import data from "../../books.json";
+import data from '../../books.json';
 
-import { Container, Card, Typography, Box, List } from "@mui/material";
+import { Container, Card, Typography, Box, List } from '@mui/material';
 
 export default function Library() {
-
-  const [books, setBooks] = useState("");
-  const [wish, setWish] = useState("");
+  const [books, setBooks] = useState('');
+  const [wish, setWish] = useState('');
 
   const [wishlist] = useState(data.slice(10, 20));
   const [suggestions] = useState(data.slice(20, 25));
 
   const myFunction = async () => {
-    const promise = await listagemMeusLivros();
+    const promise = await listagemMeusLivros().then((res) =>
+      res.map((b) => ({
+        id: b.ID_Livro,
+        title: b.Título,
+        author: b.Author,
+        genre: b.Gênero,
+        cover: b.Capa,
+      }))
+    );
     setBooks(promise);
-    const promiseWish = await listagemDesejo();
+    const promiseWish = await listagemDesejo().then((res) =>
+      res.map((b) => ({
+        id: b.ID_Livro,
+        title: b.Título,
+        author: b.Author,
+        genre: b.Gênero,
+        cover: b.Capa,
+      }))
+    );
     setWish(promiseWish);
     console.log(promiseWish);
   };
@@ -29,17 +44,17 @@ export default function Library() {
   useEffect(() => {
     myFunction();
   }, []);
-  
+
   return (
     <Container maxWidth="md" sx={{ mb: 10 }}>
-      <Typography variant="h2" sx={{ fontSize: "2rem" }}>
+      <Typography variant="h2" sx={{ fontSize: '2rem' }}>
         Minha biblioteca
       </Typography>
 
       <Box
         sx={{
-          display: "grid",
-          gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
           gap: 3,
           my: 3,
         }}
@@ -48,7 +63,7 @@ export default function Library() {
           <Typography variant="h6">Meus livros</Typography>
           <List
             sx={{
-              overflowY: "auto",
+              overflowY: 'auto',
               height: 300,
               mt: 1,
             }}
@@ -72,7 +87,7 @@ export default function Library() {
           <Typography variant="h6">Minha lista de desejos</Typography>
           <List
             sx={{
-              overflowY: "auto",
+              overflowY: 'auto',
               height: 300,
               mt: 1,
             }}
@@ -99,8 +114,8 @@ export default function Library() {
         </Typography>
         <Box
           sx={{
-            display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
+            display: 'grid',
+            gridTemplateColumns: 'repeat(5, 1fr)',
             gap: 2,
           }}
         >

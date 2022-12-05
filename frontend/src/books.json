@@ -5,7 +5,8 @@
     "Autor": "Yuval Noah Harari",
     "Editora": "Companhia das Letras",
     "Gênero": "História",
-    "Capa": "https://images-na.ssl-images-amazon.com/images/I/41HtOsNN4WL.jpg"
+    "Capa": "https://images-na.ssl-images-amazon.com/images/I/41HtOsNN4WL.jpg",
+    "score": 1.2
   },
   {
     "ID_Livro": 2,
@@ -13,7 +14,8 @@
     "Autor": "Leonard Milodinow",
     "Editora": "Zahar",
     "Gênero": "Estatística e Probabilidade",
-    "Capa": "https://images-na.ssl-images-amazon.com/images/I/61DU0FRThRL.jpg"
+    "Capa": "https://images-na.ssl-images-amazon.com/images/I/61DU0FRThRL.jpg",
+    "score": 0.3
   },
   {
     "ID_Livro": 3,
@@ -21,7 +23,8 @@
     "Autor": "Patrick Rothfuss",
     "Editora": "Arqueiro",
     "Gênero": "Fantasia",
-    "Capa": "https://images-na.ssl-images-amazon.com/images/I/91Tb8yIdRML.jpg"
+    "Capa": "https://images-na.ssl-images-amazon.com/images/I/91Tb8yIdRML.jpg",
+    "score": 4.3
   },
   {
     "ID_Livro": 4,
@@ -29,7 +32,8 @@
     "Autor": "Patrick Rothfuss",
     "Editora": "Arqueiro",
     "Gênero": "Fantasia",
-    "Capa": "https://images-na.ssl-images-amazon.com/images/I/91FGedpG6WS.jpg"
+    "Capa": "https://images-na.ssl-images-amazon.com/images/I/91FGedpG6WS.jpg",
+    "score": 3.4
   },
   {
     "ID_Livro": 5,
@@ -37,7 +41,8 @@
     "Autor": "Patrick Rothfuss",
     "Editora": "Arqueiro",
     "Gênero": "Fantasia",
-    "Capa": "https://images-na.ssl-images-amazon.com/images/I/514znJoYOxS._SX346_BO1,204,203,200_.jpg"
+    "Capa": "https://images-na.ssl-images-amazon.com/images/I/514znJoYOxS._SX346_BO1,204,203,200_.jpg",
+    "score": 4.8
   },
   {
     "ID_Livro": 6,
@@ -45,7 +50,8 @@
     "Autor": "Andy Weir",
     "Editora": "Arqueiro",
     "Gênero": "Ficção Científica",
-    "Capa": "https://images-na.ssl-images-amazon.com/images/I/91ZtGAi9gNL.jpg"
+    "Capa": "https://images-na.ssl-images-amazon.com/images/I/91ZtGAi9gNL.jpg",
+    "score": 5
   },
   {
     "ID_Livro": 7,
@@ -78,14 +84,6 @@
     "Editora": "Jambô Editora",
     "Gênero": "Fantasia",
     "Capa": "https://m.media-amazon.com/images/I/51K04DrFFeL.jpg"
-  },
-  {
-    "ID_Livro": 11,
-    "Título": "A Joia da Alma",
-    "Autor": "Karen Soarele",
-    "Editora": "Jambô Editora",
-    "Gênero": "Fantasia",
-    "Capa": "https://jamboeditora.com.br/app/uploads/2018/05/Lit-A-Joia-da-Alma.png"
   },
   {
     "ID_Livro": 12,

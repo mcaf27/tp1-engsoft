@@ -38,7 +38,6 @@ const genres = [
   'Todos',
 ];
 
-
 function ListBooks({ books }) {
   return (
     books &&
@@ -133,21 +132,42 @@ export default function Books() {
   };
 
   const myFunction = async () => {
-    const promise = await listagem();
+    const promise = await listagem().then((res) =>
+      res.map((b) => ({
+        id: b.ID_Livro,
+        title: b.Título,
+        author: b.Author,
+        genre: b.Gênero,
+        cover: b.Capa,
+        score: b.score,
+      }))
+    );
     setBooks(promise);
     setBooksF(promise);
+    console.log(promise);
   };
 
-  useEffect(() => {myFunction();}, [enviado]);
+  useEffect(() => {
+    myFunction();
+  }, []);
 
-  useEffect(() => { console.log(selectedGenre);
+  useEffect(() => {
+    if (title) {
+      setBooksF([
+        { id: Math.floor(Math.random() * 1000), title, author, cover, genre, score: 0 },
+        ...booksF,
+      ]);
+    }
+  }, [enviado]);
+
+  useEffect(() => {
+    console.log(selectedGenre);
     if (selectedGenre == 'Todos') {
       setBooksF(books);
     } else if (books) {
       setBooksF(books.filter((b) => b.genre === selectedGenre));
     }
   }, [selectedGenre]);
-
 
   return (
     <>
@@ -158,6 +178,7 @@ export default function Books() {
           </Typography>
           <Button
             variant="contained"
+            id="criar-novo-livro"
             sx={{ letterSpacing: '1px' }}
             onClick={() => {
               setNewBookModalOpen(true);
@@ -168,7 +189,7 @@ export default function Books() {
           </Button>
         </Stack>
         <Card sx={{ p: 3, my: 3 }}>
-          <Stack direction="row" gap={1} flexWrap="wrap" mb={3}>
+          <Stack id="genre-filters" direction="row" gap={1} flexWrap="wrap" mb={3}>
             <Typography component="span">Filtre por gênero:</Typography>
             {genres.map((genre, index) => (
               <Chip
@@ -192,8 +213,12 @@ export default function Books() {
           >
             {/* (genreFilterResults.length > 0 ? genreFilterResults : books) */}
 
-            <ListBooks books={booksF} />
-
+            <ListBooks
+              books={booksF.slice(
+                booksPerPage * (currentPage - 1),
+                booksPerPage * (currentPage - 1) + booksPerPage
+              )}
+            />
           </Box>
           <Stack direction="row" justifyContent="center" mt={3}>
             <Pagination
@@ -209,6 +234,7 @@ export default function Books() {
                 });
                 setCurrentPage(n);
               }}
+              id="books-pagination"
             />
           </Stack>
         </Card>
@@ -216,6 +242,7 @@ export default function Books() {
 
       <Dialog
         open={newBookModalOpen}
+        id="novo-livro-modal"
         onClose={() => {
           setNewBookModalOpen(false);
           setTitle('');
@@ -274,6 +301,7 @@ export default function Books() {
             helperText={genreError}
             label="Gênero"
             select
+            id="genero"
             SelectProps={{
               native: true,
               defaultValue: 'none',
@@ -305,6 +333,7 @@ export default function Books() {
           <Button
             variant="contained"
             color="secondary"
+            type="submit"
             sx={{ width: 'fit-content', lineHeight: '120%', mx: 'auto', mt: 1 }}
             endIcon={<Add />}
             onClick={async () => {
