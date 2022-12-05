@@ -21,3 +21,4 @@ jobs:
           build: pwd && ls && npm run build
           start: pwd && ls && npm start
           wait-on: 'http://localhost:3000'
+          wait-on-timeout: 500
