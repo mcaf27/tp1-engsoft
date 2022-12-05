@@ -9,6 +9,7 @@ jobs:
     steps:
       - name: Setup npm package
         run: yarn
+        working-directory: frontend
       - name: Checkout
         uses: actions/checkout@v2
       - name: Cypress run
